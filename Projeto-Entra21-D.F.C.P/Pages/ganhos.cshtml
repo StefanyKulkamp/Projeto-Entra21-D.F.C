@@ -1,5 +1,56 @@
 ﻿@page
-@{
-    ViewData["Title"] = "Ganhos";
-}
+@{ ViewData["Title"] = "Ganhos"; }
 
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <h1 class="card-title mb-1">Ganhos</h1>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-sm-3 col-lg-4">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <div>Insira sua renda mensal: </div>
+                                    <div><input type="text" name="rendaMensal" size="25"> <br /></div>
+                                    <button class="btn btn-brand" type="button">Inserir </button>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8 col-lg-9">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <div>Renda Mensal </div>
+                                    <div class="text-value">Grafico da renda</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-6">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-4">
+                                    <div>Historico </div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

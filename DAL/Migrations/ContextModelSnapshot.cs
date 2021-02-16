@@ -15,16 +15,16 @@ namespace DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Metadata.ContasPagar", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Conta")
                         .HasColumnType("nvarchar(max)");
@@ -50,7 +50,7 @@ namespace DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Compra")
                         .HasColumnType("nvarchar(max)");
@@ -73,7 +73,7 @@ namespace DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
@@ -102,7 +102,7 @@ namespace DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("RemuneracaoFamilia")
                         .HasColumnType("float");
@@ -125,7 +125,7 @@ namespace DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ContasPagarId")
                         .HasColumnType("int");
@@ -136,6 +136,9 @@ namespace DAL.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GanhosId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Idade")
                         .HasColumnType("int");
 
@@ -144,6 +147,9 @@ namespace DAL.Migrations
 
                     b.Property<string>("Profissao")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SaldoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
@@ -178,7 +184,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("Metadata.Ganhos", b =>
                 {
                     b.HasOne("Metadata.Usuario", "Usuario")
-                        .WithMany()
+                        .WithMany("ganhos")
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Usuario");
@@ -187,7 +193,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("Metadata.RemuneracaoTotal", b =>
                 {
                     b.HasOne("Metadata.Usuario", "Usuario")
-                        .WithMany()
+                        .WithMany("saldo")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -200,6 +206,10 @@ namespace DAL.Migrations
                     b.Navigation("Contas");
 
                     b.Navigation("Despesas");
+
+                    b.Navigation("ganhos");
+
+                    b.Navigation("saldo");
                 });
 #pragma warning restore 612, 618
         }
